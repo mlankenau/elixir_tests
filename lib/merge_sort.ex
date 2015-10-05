@@ -3,15 +3,11 @@ defmodule MergeSort do
     _sort(list)
   end
 
-  defp _sort([a]) do
-    [a]
-  end
+  defp _sort([a]), do: [a]
 
   defp _sort(list) do
     {a, b} = Enum.split(list, div(length(list),2))
-    a_sorted = _sort(a)
-    b_sorted = _sort(b)
-    _merge([], a_sorted, b_sorted)
+    _merge([], _sort(a), _sort(b))
   end
 
   defp _merge(left, [], []), do: left
